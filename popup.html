@@ -10,23 +10,27 @@
 
 <body>
 
-  <!-- Pantalla Verde (Segura) -->
-  <div id="greenScreen" class="screen">
-    <div class="popup-container">
-      <img src="img/icon_checa_page_completo.png" alt="Logo" class="logo">
-      <img src="img/green_icon.png" alt="Seguro" class="icon-status">
-      <p>¡La página es segura!</p>
-      <p>No se han detectado riesgos ni amenazas.</p>
+  <!-- Pantalla Verde-->
+<div id="greenScreen" class="screen">
+  <div class="popup-container">
+    <img src="img/icon_checa_page_completo.png" alt="Logo" class="logo">
+    <img src="img/green_icon.png" alt="Seguro" class="icon-status">
+    <div class="status-box status-green">
+      <p><strong>La página es segura.</strong><br>
+      No se han detectado riesgos ni amenazas.</p>
     </div>
   </div>
+</div>
 
-  <!-- Pantalla Roja (No segura) -->
+  <!-- Pantalla Roja-->
   <div id="redScreen" class="screen">
     <div class="popup-container">
       <img src="img/icon_checa_page_completo.png" alt="Logo" class="logo">
       <img src="img/red_icon.png" alt="Riesgo" class="icon-status">
-      <p>¡La página no es segura!</p>
-      <p>Se han detectado riesgos que podrían comprometer tu información.</p>
+      <div class="status-box status-red">
+        <p><strong>La página no es segura.</strong><br>
+        Su informacion podría estar en riesgo.</p>
+      </div>
     </div>
   </div>
 
