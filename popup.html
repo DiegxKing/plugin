@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChecaWeb</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Pantalla Verde (Segura) -->
+  <div id="greenScreen" class="screen">
+    <div class="popup-container">
+      <img src="img/icon_checa_page_completo.png" alt="Logo" class="logo">
+      <img src="img/green_icon.png" alt="Seguro" class="icon-status">
+      <p>¡La página es segura!</p>
+      <p>No se han detectado riesgos ni amenazas.</p>
+    </div>
+  </div>
+
+  <!-- Pantalla Roja (No segura) -->
+  <div id="redScreen" class="screen">
+    <div class="popup-container">
+      <img src="img/icon_checa_page_completo.png" alt="Logo" class="logo">
+      <img src="img/red_icon.png" alt="Riesgo" class="icon-status">
+      <p>¡La página no es segura!</p>
+      <p>Se han detectado riesgos que podrían comprometer tu información.</p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

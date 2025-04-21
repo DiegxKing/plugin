@@ -1,0 +1,36 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C202C;
+    color: #fff;
+}
+
+.screen {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+.popup-container {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 277px;
+    margin-bottom: 10px;
+}
+
+.icon-status {
+    width: 60px;
+    margin-top: 1px;
+}
+
+#greenScreen {
+    display: none;
+    background-color: #1C202C;
+}
+
+#redScreen {
+    display: none;
+    background-color: #1C202C;
+}

@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "ChecaPage",
+    "version": "1.0",
+    "description": "Extensión de seguridad que detecta y bloquea páginas web con dominios potencialmente maliciosos, como .tk, .gq, .xyz, entre otros. Protege tu navegación en tiempo real.",
+    "permissions": ["tabs", "webRequest", "webRequestBlocking"],
+    "host_permissions": ["<all_urls>"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "img/icon_checa_page.png"
+    },
+    "icons": {
+      "128": "img/icon_checa_page.png"
+    }
+  } 
+  
