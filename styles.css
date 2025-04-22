@@ -25,6 +25,7 @@ body {
 .popup-container {
     width: 300px;
     margin: 0 auto;
+    position: relative;
 }
 
 .logo {
@@ -47,4 +48,84 @@ body {
 .status-red {
     background-color: #D30000;
     color: white;
+}
+
+/* ==== SWITCH STYLES ==== */
+.switch-container {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 1000; /* MÁS ALTO que el overlay */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 28px;   /* reducido de 40px */
+    height: 16px;  /* reducido de 22px */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 10px; /* antes 16px */
+    width: 10px;  /* antes 16px */
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2A91D0;
+}
+
+input:checked + .slider:before {
+    transform: translateX(12px); /* ajustado al nuevo tamaño */
+}
+/* ==== OVERLAY CUANDO EL PLUGIN ESTÁ DESACTIVADO ==== */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(28, 32, 44, 0.92); /* fondo opaco con transparencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    z-index: 999;
+}
+
+.overlay-content {
+    background-color: #fff;
+    color: #000;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    max-width: 260px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+    display: none;
 }
