@@ -12,23 +12,43 @@
 
     
 
-  <!-- Pantalla Verde (Segura) -->
+  <!-- SWITCH GLOBAL -->
+  <div class="switch-container">
+    <label class="switch">
+      <input type="checkbox" id="pluginToggle" checked>
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <!-- OVERLAY GLOBAL -->
+  <div id="disabledOverlay" class="overlay hidden">
+    <div class="overlay-content">
+      <strong>El plugin se ha desactivado.</strong><br>
+      Actívalo para mantenerte protegido.
+    </div>
+  </div>
+
+  <!-- Pantalla Verde -->
   <div id="greenScreen" class="screen">
     <div class="popup-container">
       <img src="img/icon_checa_page_completo.png" alt="Logo" class="logo">
       <img src="img/green_icon.png" alt="Seguro" class="icon-status">
-      <p>¡La página es segura!</p>
-      <p>No se han detectado riesgos ni amenazas.</p>
+      <div class="status-box status-green">
+        <p><strong>La página es segura.</strong><br>
+          No se han detectado riesgos ni amenazas.</p>
+      </div>
     </div>
   </div>
 
-  <!-- Pantalla Roja (No segura) -->
+  <!-- Pantalla Roja -->
   <div id="redScreen" class="screen">
     <div class="popup-container">
       <img src="img/icon_checa_page_completo.png" alt="Logo" class="logo">
       <img src="img/red_icon.png" alt="Riesgo" class="icon-status">
-      <p>¡La página no es segura!</p>
-      <p>Se han detectado riesgos que podrían comprometer tu información.</p>
+      <div class="status-box status-red">
+        <p><strong>La página no es segura.</strong><br>
+          Su información podría estar en riesgo.</p>
+      </div>
     </div>
   </div>
 
