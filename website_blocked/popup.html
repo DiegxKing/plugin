@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChecaPage - Sitio Bloqueado</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Contenedor principal de la página bloqueada -->
+  <div class="container">
+    <header>
+      <img src="../img/icon_checa_page_completo.png" alt="Logo ChecaPage" class="logo">
+    </header>
+    
+    <!-- Mensaje de advertencia -->
+    <div class="alert-box">
+      <div class="icon">
+        <img src="../img/red_icon.png" alt="Icono de alerta" class="alert-icon">
+      </div>
+      <h1>SITIO POTENCIALMENTE PELIGROSO</h1>
+      <p><strong>Esta página ha sido bloqueada.</strong></p>
+      <p>Podrías estar poniendo en riesgo tu seguridad y tus datos personales al visitar este sitio.</p>
+      <p><strong>URL: <span class="url">http://www.textfiles.com/</span></strong></p>
+      <div class="buttons">
+        <button onclick="window.history.back()">Volver atrás</button>
+        <button onclick="window.location.href='http://www.textfiles.com/'" class="enter-page-btn">Entrar a la página</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

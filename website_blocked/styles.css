@@ -1,0 +1,82 @@
+/* Estilo global */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1C202C;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* Logo */
+  .logo {
+    width: 444px;
+    margin-bottom: 30px;
+  }
+  
+  /* Caja de alerta */
+  .alert-box {
+    background-color: #1E212A;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+  
+  /* Icono de alerta ROJO */
+  .alert-icon {
+    width: 65px;
+  }
+  
+  /* Título */
+  h1 {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  
+  /* URL */
+  .url {
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  /* Botones */
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: #2A91D0;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Botón "Entrar a la página" */
+.enter-page-btn {
+  background-color: #1E212A;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
