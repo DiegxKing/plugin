@@ -11,7 +11,11 @@ const apiKey = '43651c3eaa330747592a1294021eda74e9a517841d286da7eb3f21e725415d70
 
 // Codificar la URL en base64 de forma segura
 const encodeUrl = (url) => {
-  return Buffer.from(url).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  return Buffer.from(url)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');  // Codifica la URL a base64 y ajusta los caracteres
 };
 
 // Crear un agente HTTPS que valide el certificado del servidor
@@ -31,19 +35,19 @@ const verifyUrlWithVirusTotal = async (url) => {
       httpsAgent: agent,  // Usar el agente HTTPS para manejar la conexión
     });
 
-    console.log('Respuesta completa de VirusTotal:', JSON.stringify(response.data, null, 2));
-
     const results = response.data.data.attributes.last_analysis_results;
-    let isMalicious = false;
     const flaggedCategories = ['malicious', 'phishing', 'suspicious', 'malware'];
-for (const engine in results) {
-  const category = results[engine].category;
-  if (flaggedCategories.includes(category)) {
-    console.log(`⚠️ Detectado por ${engine}: ${category} - ${results[engine].result}`);
-    isMalicious = true;
-    break;
-  }
-}
+    let isMalicious = false;
+
+    // Verificar si la URL está en alguna de las categorías de peligro
+    for (const engine in results) {
+      const { category, result } = results[engine];
+      if (flaggedCategories.includes(category)) {
+        console.log(`⚠️ Detectado por ${engine}: ${category} - ${result}`);
+        isMalicious = true;
+        break;
+      }
+    }
 
     return isMalicious;
   } catch (error) {
@@ -53,23 +57,20 @@ for (const engine in results) {
 };
 
 // Función para verificar el certificado SSL de la URL
-const checkSSL = async (url) => {
-  // Asegurarse de que la URL comience con 'https://'
+const checkSSL = (url) => {
   const httpsUrl = url.startsWith('https://') ? url : `https://${url.replace(/^http:\/\//, '')}`;
 
   return new Promise((resolve, reject) => {
     https.get(httpsUrl, (res) => {
-      if (res.connection.getPeerCertificate().valid_to) {
-        resolve(true);  // SSL válido
-      } else {
-        resolve(false); // SSL no válido
-      }
+      const isValidSSL = res.socket.getPeerCertificate().valid_to;  // Cambié 'connection' por 'socket'
+      resolve(isValidSSL);
     }).on('error', (e) => {
       console.error(`Error al verificar SSL: ${e.message}`);
-      reject(`Error al verificar SSL: ${e.message}`);  // Cambiar para dar más información del error
+      reject(`Error al verificar SSL: ${e.message}`);
     });
   });
 };
+
 
 app.use(express.json());
 
@@ -81,23 +82,22 @@ app.post('/verificar-url', async (req, res) => {
   }
 
   try {
-    const isBlacklisted = await verifyUrlWithVirusTotal(url);
-    const estado = isBlacklisted ? 'Maliciosa' : 'Segura';
+    const isMalicious = await verifyUrlWithVirusTotal(url);
+    const estado = isMalicious ? 'Maliciosa' : 'Segura';
 
-    if (!isBlacklisted) {
+    if (!isMalicious) {
       const sslValid = await checkSSL(url);
       if (!sslValid) {
         return res.status(200).send('La URL no tiene un certificado SSL válido, no se registró');
       }
     }
 
-    if (isBlacklisted) {
+    if (isMalicious) {
       const query = 'INSERT INTO url_maliciosas (url, estado) VALUES (?, ?)';
       db.query(query, [url, estado], (err, results) => {
         if (err) {
           console.error('Error al registrar la URL:', err);
-          res.status(500).send(`Error al registrar la URL: ${err.message}`);
-          return;
+          return res.status(500).send(`Error al registrar la URL: ${err.message}`);
         }
         console.log('URL registrada en la base de datos:', results);
         res.status(200).send(`URL ${estado} registrada correctamente`);
@@ -114,5 +114,3 @@ app.post('/verificar-url', async (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
 });
-
-
